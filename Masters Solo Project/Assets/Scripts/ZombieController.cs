@@ -26,6 +26,12 @@ public class ZombieController : MonoBehaviour
         anim.SetFloat("Speed", 1f, 0.3f, Time.deltaTime);
         RotateToTarget();
 
+        float distanceToTaget = Vector3.Distance(transform.position, target.position);
+        if (distanceToTaget <= stoppingDistance)
+        {
+            anim.SetFloat("Speed", 0f);
+        }
+
         //float distanceToTaget = Vector3.Distance(transform.position, target.position);
 
         //if(distanceToTaget <= stoppingDistance)
