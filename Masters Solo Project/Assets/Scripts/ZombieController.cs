@@ -30,6 +30,8 @@ public class ZombieController : MonoBehaviour
         if (distanceToTaget <= stoppingDistance)
         {
             anim.SetFloat("Speed", 0f);
+            AttackTarget();
+            //attack
         }
 
         //float distanceToTaget = Vector3.Distance(transform.position, target.position);
@@ -47,6 +49,11 @@ public class ZombieController : MonoBehaviour
         Vector3 direction = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
         transform.rotation = rotation;
+    }
+
+    private void AttackTarget()
+    {
+        anim.SetTrigger("Attack");
     }
 
     private void GetReference()
