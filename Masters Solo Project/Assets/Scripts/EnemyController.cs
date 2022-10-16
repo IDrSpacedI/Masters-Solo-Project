@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent agent = null;
     private Animator anim = null;
-    [SerializeField] private Transform target;
+    private Transform target;
     [SerializeField] private float stoppingDistance;
     private EnemyStats stats = null;
     private float timeOfLastAttack = 0f;
@@ -84,6 +84,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         stats = GetComponent<EnemyStats>();
+        target = PlayerMovement.instance;
 
     }
 }
