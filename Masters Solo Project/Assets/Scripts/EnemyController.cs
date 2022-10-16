@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ZombieController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent agent = null;
     private Animator anim = null;
     [SerializeField] private Transform target;
     [SerializeField] private float stoppingDistance;
+    private EnemyStats stats = null;
+    private float timeOfLastAttack = 0f;
+    private bool hasStopped = false;
 
     private void Start()
     {
@@ -30,8 +33,27 @@ public class ZombieController : MonoBehaviour
         if (distanceToTaget <= stoppingDistance)
         {
             anim.SetFloat("Speed", 0f);
-            AttackTarget();
             //attack
+            if(!hasStopped)
+            {
+                hasStopped = true;
+                timeOfLastAttack = Time.time;
+            } 
+            
+            if(Time.time >= timeOfLastAttack + stats.attackSpeed)
+            {
+                timeOfLastAttack = Time.time;
+                CharacterStats targetstats = target.GetComponent<CharacterStats>();
+                AttackTarget(targetstats);
+            }
+            
+        }
+        else
+        {
+            if(hasStopped)
+            {
+                hasStopped = false;
+            }
         }
 
         //float distanceToTaget = Vector3.Distance(transform.position, target.position);
@@ -51,15 +73,17 @@ public class ZombieController : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    private void AttackTarget()
+    private void AttackTarget(CharacterStats statsToDamage)
     {
         anim.SetTrigger("Attack");
+        stats.DealDamage(statsToDamage);
     }
 
     private void GetReference()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        stats = GetComponent<EnemyStats>();
 
     }
 }

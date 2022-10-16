@@ -23,5 +23,13 @@ public class PlayerStats : CharacterStats
         hud.UpdateHealth(health, maxHealth);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(10);
+        }
+    }
+
 
 }
