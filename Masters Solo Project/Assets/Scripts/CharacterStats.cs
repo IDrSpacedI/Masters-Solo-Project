@@ -14,7 +14,7 @@ public class CharacterStats : MonoBehaviour
         InitVaribles();
     }
 
-    public void CheckHealth()
+    public virtual void CheckHealth()
     {
         if(health <= 0)
         {
