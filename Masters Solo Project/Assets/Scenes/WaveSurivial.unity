@@ -178,7 +178,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273669913}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d601a5b967fa9224e97e7e67d1218659, type: 3}
   m_Name: 
@@ -211,6 +211,7 @@ MonoBehaviour:
   - {fileID: 1318244672}
   - {fileID: 461485204}
   - {fileID: 938683444}
+  enemyList: []
 --- !u!4 &273669915
 Transform:
   m_ObjectHideFlags: 0
