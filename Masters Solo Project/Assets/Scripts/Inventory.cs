@@ -6,9 +6,11 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private Weapon[] Weapons;
 
+    [SerializeField] PlayerHUD hud;
 
     public void Start()
     {
+        GetReferences();
         InitVaibles();
     }
 
@@ -22,6 +24,8 @@ public class Inventory : MonoBehaviour
             RemoveItem((int)newItemIndex);
         }
         Weapons[(int)newItemIndex] = newItem;
+
+        hud.UpdateWeaponUI(newItem);
 
     }
 
@@ -38,5 +42,10 @@ public class Inventory : MonoBehaviour
     private void InitVaibles()
     {
         Weapons = new Weapon[3];
+    }
+
+    private void GetReferences()
+    {
+        hud = GetComponent<PlayerHUD>();
     }
 }

@@ -9,6 +9,7 @@ public class PlayerHUD : MonoBehaviour
 {
     [SerializeField] private TMP_Text currentHealthText;
     [SerializeField] private TMP_Text maxHealthText;
+    [SerializeField] private WeaponUI weaponUI;
 
     public void UpdateHealth(int currentHeath, int maxHealth)
     {
@@ -16,5 +17,9 @@ public class PlayerHUD : MonoBehaviour
         maxHealthText.text = maxHealth.ToString();
     }
 
+    public void UpdateWeaponUI(Weapon newWeapon)
+    {
+        weaponUI.UpdateInfo(newWeapon.icon, newWeapon.magazineSize, newWeapon.MagazineCount);
+    }
 
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Double Barrel Shotgun
   description: Shoot 2 powerfull short ranges Shotgun Shells
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9e75d18d2a7371a43bea1f999ba3d402, type: 3}
   prefab: {fileID: 1652954791862484, guid: b02ea55a7090ed64ba3cafe8b77625f6, type: 3}
   magazineSize: 2
   MagazineCount: 100
