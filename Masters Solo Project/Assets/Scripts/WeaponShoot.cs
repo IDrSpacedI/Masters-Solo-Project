@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponShoot : MonoBehaviour
 {
 
+    private float lastShootTime = 0;
+
     private Camera cam;
     private Inventory inventory;
     private EquipmentManager manager;
@@ -19,26 +21,38 @@ public class WeaponShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKey(KeyCode.Mouse0))
         {
-            Debug.Log("pew pew");
-            Shoot();
+            shoot();
         }
     }
 
-    private void Shoot()
+    private void RaycastShoot(Weapon currentWeapon)
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
-        float currentWeaponRange = inventory.GetItem(manager.currentlyEquipedWeapon).range;
+        float currentWeaponRange = currentWeapon.range;
 
         if (Physics.Raycast(ray, out hit, currentWeaponRange))
         {
             Debug.Log(hit.transform.name);
+        }  
+    }
+
+    private void shoot()
+    {
+        Weapon currentWeapon = inventory.GetItem(manager.currentlyEquipedWeapon);
+
+        if(Time.time > lastShootTime + currentWeapon.fireRate)
+        {
+            lastShootTime = Time.time;
+
+            RaycastShoot(currentWeapon);
+
+
         }
 
-       
     }
 
     private void GetReferences()
