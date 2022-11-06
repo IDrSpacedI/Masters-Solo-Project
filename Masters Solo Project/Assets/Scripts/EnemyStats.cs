@@ -22,6 +22,7 @@ public class EnemyStats : CharacterStats
     public override void Die()
     {
         base.Die();
+        Debug.Log("DEAD");
         Destroy(gameObject);
     }
 

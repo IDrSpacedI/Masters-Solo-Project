@@ -18,6 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 1652954791862484, guid: b02ea55a7090ed64ba3cafe8b77625f6, type: 3}
   MuzzleFlashPartical: {fileID: 748781637555137343, guid: a84d7b59b67eebe46808743d57e61e60,
     type: 3}
+  damage: 25
   magazineSize: 2
   MagazineCount: 100
   fireRate: 1.25

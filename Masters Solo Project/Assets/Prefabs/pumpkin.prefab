@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 7754724149587542575}
   m_Layer: 0
   m_Name: pumpkin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,7 +553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6aadc3a2837b2e4b98113930a1c0f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   stoppingDistance: 3
 --- !u!114 &7754724149587542575
 MonoBehaviour:

@@ -20,6 +20,7 @@ public class CharacterStats : MonoBehaviour
         {
             health = 0;
             isDead = true;
+            Die();
         }
         if(health >= maxHealth)
         {

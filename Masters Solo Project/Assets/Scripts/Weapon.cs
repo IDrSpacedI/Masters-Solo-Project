@@ -7,6 +7,7 @@ public class Weapon : Item
 {
     public GameObject prefab;
     public GameObject MuzzleFlashPartical;
+    public int damage;
     public int magazineSize;
     public int MagazineCount;
     public float fireRate;
