@@ -37,7 +37,9 @@ public class WeaponShoot : MonoBehaviour
         if (Physics.Raycast(ray, out hit, currentWeaponRange))
         {
             Debug.Log(hit.transform.name);
-        }  
+        }
+
+        Instantiate(currentWeapon.MuzzleFlashPartical, manager.currentWeaponBarrel);
     }
 
     private void shoot()
