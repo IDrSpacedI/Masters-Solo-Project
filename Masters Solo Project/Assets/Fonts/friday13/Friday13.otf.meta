@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8f227fe3c95833648b8ce479fce936b3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Friday13
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 96db3bf1dda3663499d781ee40bff536, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
