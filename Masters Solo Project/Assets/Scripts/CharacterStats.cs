@@ -56,6 +56,11 @@ public class CharacterStats : MonoBehaviour
         SetHealthTo(healAfterHeal);
     }
 
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public virtual void InitVaribles()
     {
         maxHealth = 100;

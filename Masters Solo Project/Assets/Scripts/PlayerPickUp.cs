@@ -8,8 +8,8 @@ public class PlayerPickUp : MonoBehaviour
     [SerializeField] private LayerMask pickupLayer;
 
     private Camera cam;
-
     private Inventory inventory;
+    private PlayerStats stats;
 
     private void Start()
     {
@@ -27,8 +27,26 @@ public class PlayerPickUp : MonoBehaviour
             if (Physics.Raycast(ray, out hit, pickupRange, pickupLayer))
             {
                 Debug.Log("Hit:" + hit.transform.name);
-                Weapon newItem = hit.transform.GetComponent<ItemObject>().item as Weapon;
-                inventory.AddItem(newItem);
+                if (hit.transform.GetComponent<ItemObject>().item as Weapon)
+                {
+                    Weapon newItem = hit.transform.GetComponent<ItemObject>().item as Weapon;
+                    inventory.AddItem(newItem);
+                }
+                else
+                {
+                    Consumables newItem = hit.transform.GetComponent<ItemObject>().item as Consumables;
+                    if(newItem.Type == ConsumableType.Medkit)
+                    {
+                        //heal
+                        Debug.Log("HEAL ME");
+                        stats.Heal(stats.GetMaxHealth());
+                    }
+                    else
+                    {
+                        //ammo
+                    }
+                }
+
                 Destroy(hit.transform.gameObject);
             }
         }
@@ -38,5 +56,6 @@ public class PlayerPickUp : MonoBehaviour
     {
         cam = GetComponentInChildren<Camera>();
         inventory = GetComponent<Inventory>();
+        stats = GetComponent<PlayerStats>();
     }
 }
