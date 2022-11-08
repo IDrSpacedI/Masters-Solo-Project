@@ -54,7 +54,8 @@ public class EquipmentManager : MonoBehaviour
     private void EquipWeapon(Weapon weapon)
     {
         currentlyEquipedWeapon = (int)weapon.WeaponStyle;
-        Instantiate(weapon.prefab, weaponHolder);
+        currentWeaponObject = Instantiate(weapon.prefab, weaponHolder);
+        currentWeaponBarrel = currentWeaponObject.transform.GetChild(0);
     }
 
     private void UnequipWeapon()
