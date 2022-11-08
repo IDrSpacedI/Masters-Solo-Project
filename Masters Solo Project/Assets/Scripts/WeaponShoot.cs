@@ -10,7 +10,8 @@ public class WeaponShoot : MonoBehaviour
     private Camera cam;
     private Inventory inventory;
     private EquipmentManager manager;
-    
+
+    [SerializeField] private GameObject BloodPS = null;
 
 
     private void Start()
@@ -41,9 +42,12 @@ public class WeaponShoot : MonoBehaviour
             {
                 CharacterStats enemyStats = hit.transform.GetComponent<CharacterStats>();
                 enemyStats.TakeDamage(currentWeapon.damage);
+
+                //spawn partical
+                SpawnBloodPartical(hit.point);
             }
         }
-
+        
         Instantiate(currentWeapon.MuzzleFlashPartical, manager.currentWeaponBarrel);
     }
 
@@ -61,6 +65,15 @@ public class WeaponShoot : MonoBehaviour
         }
 
     }
+
+    private void SpawnBloodPartical(Vector3 postion)
+    {
+        Instantiate(BloodPS, postion, new Quaternion(0, 0, 0, 0));
+    }
+        
+
+        
+
 
     private void GetReferences()
     {
