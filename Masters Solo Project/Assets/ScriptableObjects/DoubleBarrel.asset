@@ -22,6 +22,6 @@ MonoBehaviour:
   magazineSize: 2
   MagazineCount: 100
   fireRate: 1.25
-  range: 75
+  range: 10
   WeaponType: 3
   WeaponStyle: 0

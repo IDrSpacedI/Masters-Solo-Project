@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerPickUp : MonoBehaviour
 {
     [SerializeField] private float pickupRange;
     [SerializeField] private LayerMask pickupLayer;
+
+    public TMP_Text pickuptext;
 
     private Camera cam;
     private Inventory inventory;
@@ -31,6 +34,7 @@ public class PlayerPickUp : MonoBehaviour
                 {
                     Weapon newItem = hit.transform.GetComponent<ItemObject>().item as Weapon;
                     inventory.AddItem(newItem);
+                    pickuptext.gameObject.SetActive(false);
                 }
                 else
                 {

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: addd657a9a3291b4ba648d51ed60531f
+  - enabled: 1
     path: Assets/Scenes/WaveSurivial.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
