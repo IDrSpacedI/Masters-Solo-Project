@@ -7,6 +7,7 @@ public class EquipmentManager : MonoBehaviour
     public int currentlyEquipedWeapon = 0;
     public Transform currentWeaponBarrel = null;
     private GameObject currentWeaponObject = null;
+    private PlayerHUD hud;
 
     [SerializeField] private Transform weaponHolder = null;
 
@@ -56,6 +57,7 @@ public class EquipmentManager : MonoBehaviour
         currentlyEquipedWeapon = (int)weapon.WeaponStyle;
         currentWeaponObject = Instantiate(weapon.prefab, weaponHolder);
         currentWeaponBarrel = currentWeaponObject.transform.GetChild(0);
+        hud.UpdateWeaponUI(weapon);
     }
 
     private void UnequipWeapon()
@@ -66,5 +68,6 @@ public class EquipmentManager : MonoBehaviour
     private void getReferences()
     {
         inventory = GetComponent<Inventory>();
+        hud = GetComponent<PlayerHUD>();
     }
 }

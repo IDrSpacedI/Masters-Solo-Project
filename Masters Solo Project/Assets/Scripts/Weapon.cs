@@ -9,7 +9,7 @@ public class Weapon : Item
     public GameObject MuzzleFlashPartical;
     public int damage;
     public int magazineSize;
-    public int MagazineCount;
+    public int storedAmmo;
     public float fireRate;
     public float range;
     public WeaponType WeaponType;

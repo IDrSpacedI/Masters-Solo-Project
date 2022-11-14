@@ -7,6 +7,17 @@ public class WeaponShoot : MonoBehaviour
 
     private float lastShootTime = 0;
 
+    [SerializeField] private bool canShoot = true;
+
+    [SerializeField] private int primaryCurrentAmmo;
+    [SerializeField] private int primaryCurrentAmmoStorage;
+
+    [SerializeField] private int secondaryCurrentAmmo;
+    [SerializeField] private int secondaryCurrentAmmoStorage;
+
+    [SerializeField] private bool primaryMagazineIsEmpty = false;
+    [SerializeField] private bool secondaryMagazineIsEmpty = false;
+
     private Camera cam;
     private Inventory inventory;
     private EquipmentManager manager;
@@ -17,6 +28,7 @@ public class WeaponShoot : MonoBehaviour
     private void Start()
     {
         GetReferences();
+        canShoot = true;
     }
 
     // Update is called once per frame
@@ -53,17 +65,96 @@ public class WeaponShoot : MonoBehaviour
 
     private void shoot()
     {
-        Weapon currentWeapon = inventory.GetItem(manager.currentlyEquipedWeapon);
+        CheckCanShoot(manager.currentlyEquipedWeapon);
 
-        if(Time.time > lastShootTime + currentWeapon.fireRate)
+        if (canShoot)
         {
-            lastShootTime = Time.time;
+            Weapon currentWeapon = inventory.GetItem(manager.currentlyEquipedWeapon);
 
-            RaycastShoot(currentWeapon);
+            if (Time.time > lastShootTime + currentWeapon.fireRate)
+            {
+                lastShootTime = Time.time;
 
+                RaycastShoot(currentWeapon);
+                UseAmmo((int)currentWeapon.WeaponStyle, 1, 0);
+            }
+        }
+        else
+            Debug.Log("Not enough ammo in mag");
+    }
+
+    private void UseAmmo(int slot, int currentAmmoUsed, int currentStoredAmmoUsed)
+    {
+        //primary
+        if(slot == 0)
+        {
+            if (primaryCurrentAmmo <= 0)
+            {
+                primaryMagazineIsEmpty = true;
+                CheckCanShoot(manager.currentlyEquipedWeapon);
+            }               
+            else
+            {
+                primaryCurrentAmmo -= currentAmmoUsed;
+                primaryCurrentAmmoStorage -= currentStoredAmmoUsed;
+            }
 
         }
 
+        //secondary
+        if(slot == 1)
+        {
+            if (secondaryCurrentAmmo <= 0)
+            {
+                secondaryMagazineIsEmpty = true;
+                CheckCanShoot(manager.currentlyEquipedWeapon);
+            }             
+            else
+            {
+                secondaryCurrentAmmo -= currentAmmoUsed;
+                secondaryCurrentAmmoStorage -= currentStoredAmmoUsed;
+            }
+                
+        }
+    }
+
+    private void CheckCanShoot(int slot)
+    {
+        //primary
+        if(slot == 0)
+        {
+            if (primaryMagazineIsEmpty)
+                canShoot = false;
+            else
+                canShoot = true;
+        }
+        
+        //secondary
+        if(slot == 1)
+        {
+            if (secondaryMagazineIsEmpty)
+                canShoot = false;
+            else
+                canShoot = true;
+        }
+        
+    }
+
+    public void InitAmmo(int slot, Weapon weapon)
+    {
+        //primary
+        if(slot == 0)
+        {
+            primaryCurrentAmmo = weapon.magazineSize;
+            primaryCurrentAmmoStorage = weapon.storedAmmo;
+        }
+
+        //seconday
+        if (slot == 0)
+        {
+            secondaryCurrentAmmo = weapon.magazineSize;
+            secondaryCurrentAmmoStorage = weapon.storedAmmo;
+        }
     }
 
     private void SpawnBloodPartical(Vector3 postion)
@@ -71,10 +162,6 @@ public class WeaponShoot : MonoBehaviour
         Instantiate(BloodPS, postion, new Quaternion(0, 0, 0, 0));
     }
         
-
-        
-
-
     private void GetReferences()
     {
         cam = GetComponentInChildren<Camera>();

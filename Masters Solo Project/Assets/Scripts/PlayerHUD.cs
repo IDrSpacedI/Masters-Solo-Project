@@ -19,7 +19,7 @@ public class PlayerHUD : MonoBehaviour
 
     public void UpdateWeaponUI(Weapon newWeapon)
     {
-        weaponUI.UpdateInfo(newWeapon.icon, newWeapon.magazineSize, newWeapon.MagazineCount);
+        weaponUI.UpdateInfo(newWeapon.icon, newWeapon.magazineSize, newWeapon.storedAmmo);
     }
 
 }

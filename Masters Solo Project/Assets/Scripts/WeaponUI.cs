@@ -7,15 +7,14 @@ using TMPro;
 public class WeaponUI : MonoBehaviour
 {
     [SerializeField] private Image icon;
-    [SerializeField] private TMP_Text magazinesize;
-    [SerializeField] private TMP_Text magazinecount;
+    [SerializeField] private TMP_Text magazinesizeText;
+    [SerializeField] private TMP_Text storedAmmoText;
 
-    public void UpdateInfo(Sprite weaponIcon, int magazineSize, int magazineCount)
+    public void UpdateInfo(Sprite weaponIcon, int magazineSize, int storedAmmo)
     {
         icon.sprite = weaponIcon;
-        magazinesize.text = magazineSize.ToString();
-        int magazineCountAmount = magazineSize * magazineCount;
-        magazinecount.text = magazineCountAmount.ToString();
+        magazinesizeText.text = magazineSize.ToString();
+        storedAmmoText.text = storedAmmo.ToString();
     }
 }
 

@@ -6632,8 +6632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 646219859}
-  magazinesize: {fileID: 1758097199}
-  magazinecount: {fileID: 692106275}
+  magazinesizeText: {fileID: 1758097199}
+  storedAmmoText: {fileID: 692106275}
 --- !u!114 &180998431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27584,7 +27584,7 @@ GameObject:
   - component: {fileID: 692106276}
   - component: {fileID: 692106275}
   m_Layer: 5
-  m_Name: MagazineCount
+  m_Name: StoredAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39785,7 +39785,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weapons: []
-  hud: {fileID: 0}
 --- !u!114 &975137571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39830,6 +39829,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4300730dd86ee4d42ae00276d4d046a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canShoot: 0
+  primaryCurrentAmmo: 0
+  primaryCurrentAmmoStorage: 0
+  secondaryCurrentAmmo: 0
+  secondaryCurrentAmmoStorage: 0
+  primaryMagazineIsEmpty: 0
+  secondaryMagazineIsEmpty: 0
   BloodPS: {fileID: 7711022901918039655, guid: d600eaa9407a8f34e9d2d9712d3a80d5, type: 3}
 --- !u!1001 &975195206
 PrefabInstance:
