@@ -13,6 +13,8 @@ public class PlayerPickUp : MonoBehaviour
     private Camera cam;
     private Inventory inventory;
     private PlayerStats stats;
+    private WeaponShoot shooting;
+    private EquipmentManager equipment;
 
     private void Start()
     {
@@ -48,6 +50,10 @@ public class PlayerPickUp : MonoBehaviour
                     else
                     {
                         //ammo
+                        if (inventory.GetItem(0) != null)
+                            shooting.InitAmmo(0, inventory.GetItem(0));
+                        if (inventory.GetItem(1) != null)
+                            shooting.InitAmmo(1, inventory.GetItem(1));
                     }
                 }
 
@@ -61,5 +67,7 @@ public class PlayerPickUp : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
         inventory = GetComponent<Inventory>();
         stats = GetComponent<PlayerStats>();
+        shooting = GetComponent<WeaponShoot>();
+        equipment = GetComponent<EquipmentManager>();
     }
 }

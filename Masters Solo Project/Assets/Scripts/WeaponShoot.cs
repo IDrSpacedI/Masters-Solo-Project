@@ -128,7 +128,7 @@ public class WeaponShoot : MonoBehaviour
         }
     }
 
-    private void AddAmmo(int slot, int currentAmmoAdded, int curredStoredAmmoAdded)
+    public void AddAmmo(int slot, int currentAmmoAdded, int curredStoredAmmoAdded)
     {
         //primary
         if (slot == 0)
