@@ -11,35 +11,31 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject endcanvas = null;
     [SerializeField] private GameObject pausecanvas = null;
 
-    private MouseLook mouse = null;
-    private PlayerStats stats = null;
+    //private MouseLook mouse = null;
+    //private PlayerStats stats = null;
 
     private void Start()
     {
         SetActiveHud(true);
 
-        mouse.GetComponent<MouseLook>();
-        stats.GetComponent<PlayerStats>();
+        //mouse.GetComponent<MouseLook>();
+        //stats.GetComponent<PlayerStats>();
 
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
-        {
-            //SetActivePause(true);
-        }
+            SetActivePause(true);
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
-        {
-            //SetActivePause(false);
-        }
+            SetActivePause(false);
     }
 
     public void SetActiveHud(bool state)
     {
         hudcanvas.SetActive(state);
         endcanvas.SetActive(!state);
-        //pausecanvas.SetActive(!state);
+        pausecanvas.SetActive(!state);
 
     }
 
@@ -50,11 +46,14 @@ public class UIManager : MonoBehaviour
 
 
         Time.timeScale = state ? 0 : 1;
-        if (state)
-            mouse.UnlockCursor();
-        else
-            mouse.LockCursor();
         isPaused = state;
+
+        //if (state)
+        //    mouse.UnlockCursor();
+        //else
+        //    mouse.LockCursor();
+        //isPaused = state;
+
     }
 
     public void Quit()
