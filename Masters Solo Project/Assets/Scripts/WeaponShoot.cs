@@ -23,6 +23,7 @@ public class WeaponShoot : MonoBehaviour
     private Inventory inventory;
     private EquipmentManager manager;
     private PlayerHUD Hud;
+    private PlayerStats stats;
 
     [SerializeField] private GameObject BloodPS = null;
 
@@ -37,15 +38,19 @@ public class WeaponShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Mouse0))
+        if(!stats.IsDead())
         {
-            shoot();
-        }
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                shoot();
+            }
 
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            Reload(manager.currentlyEquipedWeapon);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Reload(manager.currentlyEquipedWeapon);
+            }
         }
+       
     }
 
     private void RaycastShoot(Weapon currentWeapon)
@@ -259,5 +264,6 @@ public class WeaponShoot : MonoBehaviour
         inventory = GetComponent<Inventory>();
         manager = GetComponent<EquipmentManager>();
         Hud = GetComponent<PlayerHUD>();
+        stats = GetComponent<PlayerStats>();
     }
 }

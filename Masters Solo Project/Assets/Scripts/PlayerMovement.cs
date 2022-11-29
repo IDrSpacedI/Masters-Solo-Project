@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
     #region
     public static Transform instance;
 
+    private PlayerStats stats;
+
     private void Awake()
     {
         instance = this.transform;
+        stats = GetComponent<PlayerStats>();
     }
     #endregion
 
@@ -45,11 +48,15 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        if(!stats.IsDead())
+        {
+            controller.Move(move * speed * Time.deltaTime);
 
-        velocity.y += gravity * Time.deltaTime;
+            velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime);
+            controller.Move(velocity * Time.deltaTime);
+        }
+            
 
     }
 }

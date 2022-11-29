@@ -24,7 +24,7 @@ public class PlayerHUD : MonoBehaviour
 
     public void UpdateWeaponAmmoUI(int currentAmmo, int storedAmmo)
     {
-        weaponUI.UpdateAmmoUI(currentAmmo, storedAmmo);
+        weaponUI.UpdateAmmoUI(currentAmmo, storedAmmo); 
     }
 
 }

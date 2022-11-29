@@ -32,7 +32,6 @@ public class CharacterStats : MonoBehaviour
     public virtual void Die()
     {
         isDead = true;
-        SceneManager.LoadScene("Death");
     }
 
     public bool IsDead()

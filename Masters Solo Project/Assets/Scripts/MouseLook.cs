@@ -9,6 +9,8 @@ public class MouseLook : MonoBehaviour
 
     public Transform playerBody;
 
+    private PlayerStats stats;
+
     float xRotation = 0f;
 
     //locks cursor to middle and hides it
@@ -16,6 +18,7 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        stats = GetComponentInParent<PlayerStats>();
     }
 
     //allows movement of mouse to look around correctly
@@ -27,7 +30,24 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+        if (!stats.IsDead())
+        {
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            playerBody.Rotate(Vector3.up * mouseX);
+        }
+        else if (Cursor.lockState == CursorLockMode.Locked)
+            Cursor.lockState = CursorLockMode.None;
+        
+    }
+
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
