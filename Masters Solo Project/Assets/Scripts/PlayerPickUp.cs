@@ -51,7 +51,7 @@ public class PlayerPickUp : MonoBehaviour
                     {
                         //ammo
                         if (inventory.GetItem(0) != null)
-                            shooting.InitAmmo(0, inventory.GetItem(0));
+                            shooting.AddAmmo(0, inventory.GetItem(0).magazineSize, inventory.GetItem(0).storedAmmo);
                         if (inventory.GetItem(1) != null)
                             shooting.InitAmmo(1, inventory.GetItem(1));
                     }
