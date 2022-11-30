@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class WeaponShoot : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class WeaponShoot : MonoBehaviour
     private EquipmentManager manager;
     private PlayerHUD Hud;
     private PlayerStats stats;
+    public GameObject DB;
+    private Animation Anim;
 
     [SerializeField] private GameObject BloodPS = null;
 
@@ -33,6 +36,7 @@ public class WeaponShoot : MonoBehaviour
         GetReferences();
         canShoot = true;
         canReload = true;
+        Anim = DB.gameObject.GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -48,6 +52,7 @@ public class WeaponShoot : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 Reload(manager.currentlyEquipedWeapon);
+                Anim.Play("ReloadDB");
             }
         }
        
