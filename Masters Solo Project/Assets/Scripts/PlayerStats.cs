@@ -28,7 +28,7 @@ public class PlayerStats : CharacterStats
     public override void Die()
     {
         base.Die();
-        UI.SetActiveHud(false);
+        UI.SetActiveEnd(true);
     }
 
     private void Update()

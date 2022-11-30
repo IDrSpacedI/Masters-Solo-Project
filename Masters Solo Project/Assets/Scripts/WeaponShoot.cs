@@ -26,7 +26,7 @@ public class WeaponShoot : MonoBehaviour
     private PlayerHUD Hud;
     private PlayerStats stats;
     public GameObject DB;
-    private Animation Anim;
+    public Animator anim;
 
     [SerializeField] private GameObject BloodPS = null;
 
@@ -36,13 +36,16 @@ public class WeaponShoot : MonoBehaviour
         GetReferences();
         canShoot = true;
         canReload = true;
-        Anim = DB.gameObject.GetComponent<Animation>();
+        //anim = DB.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!stats.IsDead())
+        
+        anim = DB.gameObject.GetComponent<Animator>();
+
+        if (!stats.IsDead())
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
@@ -52,7 +55,8 @@ public class WeaponShoot : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 Reload(manager.currentlyEquipedWeapon);
-                Anim.Play("ReloadDB");
+                anim.SetBool("reload", true);
+                
             }
         }
        

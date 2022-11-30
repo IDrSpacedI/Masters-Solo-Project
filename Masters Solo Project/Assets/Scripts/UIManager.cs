@@ -36,7 +36,6 @@ public class UIManager : MonoBehaviour
         hudcanvas.SetActive(state);
         endcanvas.SetActive(!state);
         pausecanvas.SetActive(!state);
-
     }
 
     public void SetActivePause(bool state)
@@ -54,6 +53,11 @@ public class UIManager : MonoBehaviour
         //    mouse.LockCursor();
         //isPaused = state;
 
+    }
+
+    public void SetActiveEnd(bool state)
+    {
+        endcanvas.SetActive(state);
     }
 
     public void Quit()

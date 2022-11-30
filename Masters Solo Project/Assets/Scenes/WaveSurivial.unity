@@ -41181,6 +41181,8 @@ MonoBehaviour:
   secondaryCurrentAmmoStorage: 0
   primaryMagazineIsEmpty: 0
   secondaryMagazineIsEmpty: 0
+  DB: {fileID: 0}
+  anim: {fileID: 6109887929117999806, guid: b02ea55a7090ed64ba3cafe8b77625f6, type: 3}
   BloodPS: {fileID: 7711022901918039655, guid: d600eaa9407a8f34e9d2d9712d3a80d5, type: 3}
 --- !u!114 &975137574
 MonoBehaviour:
