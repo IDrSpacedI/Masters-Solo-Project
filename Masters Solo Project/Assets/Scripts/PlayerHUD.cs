@@ -7,9 +7,18 @@ using TMPro;
 
 public class PlayerHUD : MonoBehaviour
 {
+    public static PlayerHUD instance = null;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+
     [SerializeField] private TMP_Text currentHealthText;
     [SerializeField] private TMP_Text maxHealthText;
     [SerializeField] private WeaponUI weaponUI;
+    [SerializeField] private Score ScoreUI;
 
     public void UpdateHealth(int currentHeath, int maxHealth)
     {
@@ -25,6 +34,11 @@ public class PlayerHUD : MonoBehaviour
     public void UpdateWeaponAmmoUI(int currentAmmo, int storedAmmo)
     {
         weaponUI.UpdateAmmoUI(currentAmmo, storedAmmo); 
+    }
+
+    public void UpdateScoreAmount()
+    {
+        ScoreUI.AddToScore();
     }
 
 }
