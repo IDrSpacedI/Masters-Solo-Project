@@ -49,14 +49,15 @@ public class WeaponShoot : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                shoot();
+                shoot();               
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
                 Reload(manager.currentlyEquipedWeapon);
                 //anim.SetBool("reload", true);
-                
+                FindObjectOfType<SoundManager>().Play("ShotgunReload");
+
             }
         }
        
@@ -99,6 +100,7 @@ public class WeaponShoot : MonoBehaviour
 
                 RaycastShoot(currentWeapon);
                 UseAmmo((int)currentWeapon.WeaponStyle, 1, 0);
+                FindObjectOfType<SoundManager>().Play("ShotgunShoot");
             }
         }
         else

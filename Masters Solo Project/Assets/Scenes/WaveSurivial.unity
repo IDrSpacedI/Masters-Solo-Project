@@ -12468,7 +12468,6 @@ GameObject:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
   - component: {fileID: 330585548}
-  - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   m_Layer: 0
   m_Name: Main Camera
@@ -12477,14 +12476,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &330585544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -40826,6 +40817,7 @@ GameObject:
   - component: {fileID: 975137572}
   - component: {fileID: 975137573}
   - component: {fileID: 975137574}
+  - component: {fileID: 975137575}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -41014,6 +41006,14 @@ MonoBehaviour:
   hudcanvas: {fileID: 1146316041}
   endcanvas: {fileID: 2107269686}
   pausecanvas: {fileID: 397832635}
+--- !u!81 &975137575
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975137563}
+  m_Enabled: 1
 --- !u!1001 &975195206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82176,25 +82176,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - active: 0
-    name: 
+  - name: 
     clip: {fileID: 0}
-    audioSource: {fileID: 0}
-    spactialSound: 0
-    minDistance: 0
-    maxDistance: 0
     volume: 0
     pitch: 0
-    source: {fileID: 0}
     loop: 0
-    randomArray: 0
-    soundsArray: []
-    audioType: {fileID: 0}
-    playOnStart: 0
-    fadeIn: 0
-    fadeInTime: 0
-    fadeOut: 0
-    fadeOutTime: 0
+    source: {fileID: 0}
+  - name: AmbientHorror
+    clip: {fileID: 8300000, guid: 61306d651b19b824ebfb22a3a7e87e38, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ShotgunShoot
+    clip: {fileID: 8300000, guid: d7ef6d5c671c53e4383be007dd659094, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShotgunReload
+    clip: {fileID: 8300000, guid: d6d42639f6cd3a5488b562183ac798f0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AlienAttack
+    clip: {fileID: 8300000, guid: 46bfcbeebe5ecff499c2104c1fc3cf5b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AlienIdle
+    clip: {fileID: 8300000, guid: e2e3182cba011684a85dbea5bf23619a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1903935068
 Transform:
   m_ObjectHideFlags: 0

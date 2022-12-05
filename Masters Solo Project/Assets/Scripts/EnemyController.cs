@@ -77,6 +77,7 @@ public class EnemyController : MonoBehaviour
     {
         anim.SetTrigger("Attack");
         stats.DealDamage(statsToDamage);
+        FindObjectOfType<SoundManager>().Play("AlienAttack");
     }
 
     private void GetReference()
