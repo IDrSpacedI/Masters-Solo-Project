@@ -26,9 +26,18 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        {
             SetActivePause(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+            
+
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        {
             SetActivePause(false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+            
     }
 
     public void SetActiveHud(bool state)

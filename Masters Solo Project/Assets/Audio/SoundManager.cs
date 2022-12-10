@@ -37,11 +37,6 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         Play("AmbientHorror");
-        Play("Rain");
-
-
-
-
     }
 
     public void Play(string name)
