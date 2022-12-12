@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
         InitVaibles();
     }
 
+
+    //adds item to inventory
     public void AddItem(Weapon newItem)
     {
 
@@ -29,11 +31,13 @@ public class Inventory : MonoBehaviour
         shoot.InitAmmo((int)newItem.WeaponStyle, newItem);
     }
 
+    //removes item from inventory
     public void RemoveItem(int index)
     {
         Weapons[index] = null;
     }
 
+    //gets weapon index
     public Weapon GetItem(int index)
     {
         return Weapons[index];

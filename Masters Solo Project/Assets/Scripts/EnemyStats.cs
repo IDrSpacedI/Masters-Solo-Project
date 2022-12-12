@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
+    //varibles
     [SerializeField] private int damage;
     public float attackSpeed;
 
@@ -14,11 +15,13 @@ public class EnemyStats : CharacterStats
         InitVaribles();
     }
 
+    //deal damage to target
     public void DealDamage(CharacterStats statsToDamage)
     {
         statsToDamage.TakeDamage(damage);
     }
 
+    //updates score and destroys enemie
     public override void Die()
     {
         base.Die();
@@ -26,6 +29,7 @@ public class EnemyStats : CharacterStats
         Destroy(gameObject);
     }
 
+    //overrides int varibles 
     public override void InitVaribles()
     {
         maxHealth = 25;

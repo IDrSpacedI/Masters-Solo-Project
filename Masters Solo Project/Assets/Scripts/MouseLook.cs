@@ -40,12 +40,13 @@ public class MouseLook : MonoBehaviour
         
     }
 
-
+    //unlocks cursor
     public void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
     }
 
+    //locks cursor
     public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;

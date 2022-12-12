@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
+    //spawn states
     public enum SpawnStat { SPAWNING, WAITING, COUNTING};
 
     //varibles
@@ -22,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<CharacterStats> enemyList;
 
 
+    //sets wave countdown
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
@@ -54,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    //spawns starting wave
     private IEnumerator SpawnWave(Wave wave)
     {
         state = SpawnStat.SPAWNING;
@@ -69,6 +72,7 @@ public class EnemySpawner : MonoBehaviour
         yield break;
     }
 
+    //spawns enemies accordily
     private void SpawnEnemy(GameObject enemy)
     {
         int randomint = Random.RandomRange(1, spawner.Length);
@@ -80,6 +84,7 @@ public class EnemySpawner : MonoBehaviour
        enemyList.Add(newEnemyStats);
     }
 
+    //check if waves of enemies are dead
     private bool EnemiesAreDead()
     {
         int i = 0;
@@ -93,6 +98,7 @@ public class EnemySpawner : MonoBehaviour
         return true;
     }
 
+    //completes wave and starts new wave when enemies are dead or endscene if all rounds complete
     private void CompleteWave()
     {
         //WAVE COMPLETE 

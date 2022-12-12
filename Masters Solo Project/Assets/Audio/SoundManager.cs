@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance;
 
-    // Start is called before the first frame update
+   
     void Awake()
     {
         if (instance == null)

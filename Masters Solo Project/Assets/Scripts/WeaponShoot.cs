@@ -5,7 +5,7 @@ using UnityEngine.Animations;
 
 public class WeaponShoot : MonoBehaviour
 {
-
+    //weapon varibles
     private float lastShootTime = 0;
 
     [SerializeField] private bool canShoot = true;
@@ -47,6 +47,7 @@ public class WeaponShoot : MonoBehaviour
 
         if (!stats.IsDead())
         {
+            //allows player to shoot 
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 shoot();               
@@ -63,18 +64,20 @@ public class WeaponShoot : MonoBehaviour
        
     }
 
+    //raycasts whats infront of player on weapon shoot
     private void RaycastShoot(Weapon currentWeapon)
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
         float currentWeaponRange = currentWeapon.range;
-
+        //if player hits enemy target 
         if (Physics.Raycast(ray, out hit, currentWeaponRange))
         {
             Debug.Log(hit.transform.name);
             if(hit.transform.tag == "Enemy")
             {
+                //deals damage
                 CharacterStats enemyStats = hit.transform.GetComponent<CharacterStats>();
                 enemyStats.TakeDamage(currentWeapon.damage);
 
@@ -82,10 +85,11 @@ public class WeaponShoot : MonoBehaviour
                 SpawnBloodPartical(hit.point);
             }
         }
-        
+        //spawns weapon flash
         Instantiate(currentWeapon.MuzzleFlashPartical, manager.currentWeaponBarrel);
     }
 
+    //allows the player to shoot
     private void shoot()
     {
         CheckCanShoot(manager.currentlyEquipedWeapon);
@@ -107,9 +111,10 @@ public class WeaponShoot : MonoBehaviour
             Debug.Log("Not enough ammo in mag");
     }
 
+    //uses neccessary ammo for weapon
     private void UseAmmo(int slot, int currentAmmoUsed, int currentStoredAmmoUsed)
     {
-        //primary
+        //primary gun
         if(slot == 0)
         {
             if (primaryCurrentAmmo <= 0)
@@ -126,7 +131,7 @@ public class WeaponShoot : MonoBehaviour
 
         }
 
-        //secondary
+        //secondary gun 
         if(slot == 1)
         {
             if (secondaryCurrentAmmo <= 0)
@@ -144,9 +149,10 @@ public class WeaponShoot : MonoBehaviour
         }
     }
 
+    //allows player to add ammo on item pickup
     public void AddAmmo(int slot, int currentAmmoAdded, int curredStoredAmmoAdded)
     {
-        //primary
+        //primary gun
         if (slot == 0)
         {
             primaryCurrentAmmo += currentAmmoAdded;
@@ -164,6 +170,7 @@ public class WeaponShoot : MonoBehaviour
         }
     }
 
+    //reloads gun
     private void Reload(int slot)
     {
         if(canReload )
@@ -225,6 +232,7 @@ public class WeaponShoot : MonoBehaviour
 
     }
 
+    //checks if gun has ammo to shoot
     private void CheckCanShoot(int slot)
     {
         //primary
@@ -247,6 +255,7 @@ public class WeaponShoot : MonoBehaviour
         
     }
 
+    //ammo int varibles
     public void InitAmmo(int slot, Weapon weapon)
     {
         //primary
@@ -264,11 +273,13 @@ public class WeaponShoot : MonoBehaviour
         }
     }
 
+    //spawns blood effect on kill
     private void SpawnBloodPartical(Vector3 postion)
     {
         Instantiate(BloodPS, postion, new Quaternion(0, 0, 0, 0));
     }
-        
+      
+    //refences to certain scripts
     private void GetReferences()
     {
         cam = GetComponentInChildren<Camera>();

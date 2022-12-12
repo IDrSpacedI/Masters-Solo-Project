@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    //sets bvaribles
     private NavMeshAgent agent = null;
     private Animator anim = null;
     private Transform target;
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     private float timeOfLastAttack = 0f;
     private bool hasStopped = false;
 
+    //gets references
     private void Start()
     {
         GetReference();
@@ -23,6 +25,7 @@ public class EnemyController : MonoBehaviour
         MoveToTarget();
     }
 
+    //moves to players location in real time
     private void MoveToTarget()
     {
         agent.SetDestination(target.position);
@@ -64,6 +67,7 @@ public class EnemyController : MonoBehaviour
         //}
     }
 
+    //roates to look at player
     private void RotateToTarget()
     {
         transform.LookAt(target);
@@ -73,6 +77,7 @@ public class EnemyController : MonoBehaviour
         transform.rotation = rotation;
     }
 
+    //attacks target wand plays sound
     private void AttackTarget(CharacterStats statsToDamage)
     {
         anim.SetTrigger("Attack");

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Weapon", menuName = "Items/Weapon")]
 public class Weapon : Item
 {
+    //weapon item varibles
     public GameObject prefab;
     public GameObject MuzzleFlashPartical;
     public int damage;

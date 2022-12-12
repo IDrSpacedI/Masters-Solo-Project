@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
+    //varibles
     public int currentlyEquipedWeapon = 0;
     public Transform currentWeaponBarrel = null;
     private GameObject currentWeaponObject = null;
@@ -52,6 +53,8 @@ public class EquipmentManager : MonoBehaviour
         
     //}
 
+
+    //equips weapon and updates UI
     private void EquipWeapon(Weapon weapon)
     {
         currentlyEquipedWeapon = (int)weapon.WeaponStyle;
@@ -60,11 +63,13 @@ public class EquipmentManager : MonoBehaviour
         hud.UpdateWeaponUI(weapon);
     }
 
+    //destroys weapon and unequips
     private void UnequipWeapon()
     {
         Destroy(currentWeaponObject);
     }
 
+    //gts references
     private void getReferences()
     {
         inventory = GetComponent<Inventory>();

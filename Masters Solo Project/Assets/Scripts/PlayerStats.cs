@@ -19,12 +19,14 @@ public class PlayerStats : CharacterStats
         UI = GetComponent<UIManager>();
     }
 
+    //checks player health
     public override void CheckHealth()
     {
         base.CheckHealth();
         hud.UpdateHealth(health, maxHealth);
     }
 
+    //updates UI if dead
     public override void Die()
     {
         base.Die();
@@ -33,10 +35,10 @@ public class PlayerStats : CharacterStats
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(10);
-        }
+        //if(Input.GetKeyDown(KeyCode.T))
+        //{
+        //    TakeDamage(10);
+        //}
     }
 
 

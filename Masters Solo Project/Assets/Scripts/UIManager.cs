@@ -25,13 +25,14 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        //shows pause menu on escape
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             SetActivePause(true);
             Cursor.lockState = CursorLockMode.None;
         }
             
-
+        //closes pause menu on escpe again
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             SetActivePause(false);
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
             
     }
 
+    //sets default HUD at start
     public void SetActiveHud(bool state)
     {
         hudcanvas.SetActive(state);
@@ -47,6 +49,7 @@ public class UIManager : MonoBehaviour
         pausecanvas.SetActive(!state);
     }
 
+    //sets visability of pause 
     public void SetActivePause(bool state)
     {
         pausecanvas.SetActive(state);
@@ -64,21 +67,25 @@ public class UIManager : MonoBehaviour
 
     }
 
+    //sets end canvas visable
     public void SetActiveEnd(bool state)
     {
         endcanvas.SetActive(state);
     }
 
+    //quits game
     public void Quit()
     {
         Application.Quit();
     }
 
+    //reloads scene
     public void Restart()
     {
         SceneManager.LoadScene(1);
     }
 
+    //goes back to main menu
     public void MainMenu()
     {
         SceneManager.LoadScene(0);

@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 7754724149587542575}
   - component: {fileID: 171144811862592342}
   m_Layer: 0
-  m_Name: pumpkin
+  m_Name: pumpkin 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,11 +567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca522b0d4e2e3c54284cca581a0abb33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
-  maxHealth: 25
+  health: 50
+  maxHealth: 50
   isDead: 0
-  damage: 10
-  attackSpeed: 1
+  damage: 20
+  attackSpeed: 1.5
   canAttack: 0
 --- !u!82 &171144811862592342
 AudioSource:
